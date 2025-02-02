@@ -1,4 +1,5 @@
 export interface ViacepResult {
+    erro: any
     cep: string
     logradouro: string
     complemento: string

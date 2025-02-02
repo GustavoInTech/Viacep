@@ -1,54 +1,89 @@
-<form [formGroup]="form">
-  <div class="row p-0">
-    <div class="mb-3 col-md-4">
-      <label for="cep" class="form-label">CEP</label>
-      <input
-        formControlName="cep"
-        type="text"
-        class="form-control"
-        id="cep"
-        placeholder="Digite o CEP"
-      />
-    </div>
-    <div class="mb-3 col-md-7">
-      <label for="logradouro" class="form-label">Logradouro</label>
-      <input
-        formControlName="logradouro"
-        type="text"
-        class="form-control"
-        id="logradouro"
-        placeholder="Digite o logradouro"
-      />
-    </div>
-    <div class="mb-3 col-md-5">
-      <label for="bairro" class="form-label">Bairro</label>
-      <input
-        formControlName="bairro"
-        type="text"
-        class="form-control"
-        id="bairro"
-        placeholder="Digite o bairro"
-      />
-    </div>
-    <div class="mb-3 col-md-4">
-      <label for="cidade" class="form-label">Cidade</label>
-      <input
-        formControlName="cidade"
-        type="text"
-        class="form-control"
-        id="cidade"
-        placeholder="Digite a cidade"
-      />
-    </div>
-    <div class="mb-3 col-md-2">
-      <label for="estado" class="form-label">Estado</label>
-      <input
-        formControlName="estado"
-        type="text"
-        class="form-control"
-        id="estado"
-        placeholder="Digite o estado"
-      />
+<div class="container mt-5">
+  <div class="card shadow-lg p-4 rounded-4">
+    <h3 class="card-title text-center mb-4">Consulta de Endereço por CEP</h3>
+
+    <form [formGroup]="form">
+      <div class="row g-3">
+        <div class="col-md-4">
+          <label for="cep" class="form-label">CEP</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+            <input
+              formControlName="cep"
+              type="text"
+              class="form-control"
+              id="cep"
+              placeholder="Digite o CEP"
+              maxlength="8"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-8">
+          <label for="logradouro" class="form-label">Logradouro</label>
+          <input
+            formControlName="logradouro"
+            type="text"
+            class="form-control"
+            id="logradouro"
+            placeholder="Logradouro"
+            readonly
+          />
+        </div>
+
+        <div class="col-md-6">
+          <label for="bairro" class="form-label">Bairro</label>
+          <input
+            formControlName="bairro"
+            type="text"
+            class="form-control"
+            id="bairro"
+            placeholder="Bairro"
+            readonly
+          />
+        </div>
+
+        <div class="col-md-4">
+          <label for="cidade" class="form-label">Cidade</label>
+          <input
+            formControlName="cidade"
+            type="text"
+            class="form-control"
+            id="cidade"
+            placeholder="Cidade"
+            readonly
+          />
+        </div>
+
+        <div class="col-md-2">
+          <label for="estado" class="form-label">Estado</label>
+          <input
+            formControlName="estado"
+            type="text"
+            class="form-control"
+            id="estado"
+            placeholder="UF"
+            readonly
+          />
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-end gap-2 mt-4">
+        <button type="button" class="btn btn-primary" (click)="buscarCep()">
+          <i class="bi bi-search"></i> Buscar
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="limparCampos()"
+        >
+          <i class="bi bi-x-circle"></i> Limpar
+        </button>
+      </div>
+    </form>
+
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3" role="alert">
+      {{ errorMessage }}
     </div>
   </div>
-</form>
+</div>
